@@ -1,0 +1,30 @@
+{
+  "name": "sample-fb-login-master",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Reyber Ian Yturiaga <reyber@gourmetsociety.ph>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.7.0"
+  },
+  "devDependencies": {
+    "paper-input": "PolymerElements/paper-input#~1.1.22",
+    "paper-checkbox": "PolymerElements/paper-checkbox#~1.4.2",
+    "paper-button": "PolymerElements/paper-button#~1.0.14",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.4.3",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.3.1"
+  }
+}

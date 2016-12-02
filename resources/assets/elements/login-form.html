@@ -1,0 +1,59 @@
+<link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="/components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="login-form">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            .form {
+                @apply(--layout-vertical);
+            }
+
+            .form > input, .form > button, .form > a {
+                margin: 10px 0;
+            }
+
+            .alert {
+                background-color: #ff6864;
+                color: #ffffff;
+            }
+        </style>
+        <form action="/login" method="POST" class="form">
+            <div class="alert" hidden$="[[!showAlert]]">
+                <span>Your email/password is incorrect.</span>
+            </div>
+            <input type="hidden" name="_token" value="[[csrfToken]]">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <div class="check">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <button type="submit">Login</button>
+            <a href="/password/reset">Reset your password</a>
+            <a href="/redirect">Login with Facebook</a>
+        </form>
+    </template>
+    <script>
+        Polymer({
+            is: 'login-form',
+            properties: {
+                csrfToken: {
+                    type: String,
+                    value: function() {
+                        return window.Laravel.csrfToken;
+                    }
+                },
+                showAlert: {
+                    type: Boolean,
+                    value: function() {
+                        return !!window.authError;
+                    }
+                }
+            }
+        });
+    </script>
+</dom-module>

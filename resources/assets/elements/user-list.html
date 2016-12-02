@@ -1,0 +1,46 @@
+<link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="/components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="user-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .row {
+                @apply(--layout-horizontal);
+            }
+
+            .row > div {
+                @apply(--layout-flex);
+                padding: 10px;
+            }
+
+            .header {
+                font-weight: bold;
+            }
+        </style>
+        <iron-ajax auto url="/api/users" last-response="{{users}}"></iron-ajax>
+        <div class="user__list">
+            <div class="row">
+                <div class="name header">Name</div>
+                <div class="email header">Email</div>
+                <div class="facebook_id header">Facebook Id</div>
+            </div>
+            <template is="dom-repeat" items="[[users]]" as="user">
+                <div class="row">
+                    <div class="name">[[user.name]]</div>
+                    <div class="email">[[user.email]]</div>
+                    <div class="facebook_id">[[user.facebook_user_id]]</div>
+                </div>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'user-list',
+
+        });
+    </script>
+</dom-module>
